@@ -13,11 +13,12 @@ void setup()
 	stars[i] = new NormalParticle();
 	}//your code here
 	stars[0] = new OddballParticle();
-	// stars[1] = new JumboParticle();
+	stars[1] = new JumboParticle();
 }
 void draw()
 {
-	background(0);
+	fill(0, 0, 0, 20);
+	rect(0, 0, 600, 600);
 	for(int i = 0; i<stars.length; i ++)
 	{
 		stars[i].show();
@@ -29,8 +30,10 @@ void draw()
 }
 
 
+
 class NormalParticle implements Particle
 {
+  int r, g, b;
   double dX, dY, dDir, dSpeed, size; 
   NormalParticle()
   {
@@ -39,6 +42,9 @@ class NormalParticle implements Particle
     dX = 300;
     dY = 300; 
     size = 2;
+    r=(int)(Math.random()*256);
+	g=(int)(Math.random()*256);
+	b=(int)(Math.random()*256);
   }
  
 
@@ -74,7 +80,7 @@ class NormalParticle implements Particle
   public void show()
   {
      noStroke();
-     fill(255);
+     fill(r, g, b);
      ellipse((float)dX, (float)dY, (float)size, (float)size);
   }
 }
@@ -91,7 +97,7 @@ class OddballParticle implements Particle //uses an interface
   OddballParticle()
   {
   	dDir = 2 * Math.PI * Math.random();
-  	dSpeed = Math.random()*10;
+  	dSpeed = Math.random()*3;
     dX = 300;
     dY = 300; 
     size = 2;
@@ -103,23 +109,23 @@ class OddballParticle implements Particle //uses an interface
 	dY += Math.sin(dDir) * dSpeed;
 	if (dX <0)
 	{
-		dX = 300;
-		dY = 300;
+		dX = (int)(Math.random()*300 + 1);
+		dY = (int)(Math.random()*300 + 1);	
 	}
 	if (dX > 600)
 	{
-		dX = 300;
-		dY = 300;	
+		dX = (int)(Math.random()*300 + 1);
+		dY = (int)(Math.random()*300 + 1);		
 	}
 	if (dY <0)
 	{
-		dX = 300;
-		dY = 300;	
+		dX = (int)(Math.random()*300 + 1);
+		dY = (int)(Math.random()*300 + 1);	
 	}
 	if (dY > 600)
 	{
-		dX = 300;
-		dY = 300;	
+		dX = (int)(Math.random()*300 + 1);
+		dY = (int)(Math.random()*300 + 1);	
 	}
 	// dX = dX + (cos((float)(dDir)) *dSpeed);
 	// dY = dY + (sin((float)(dDir)) * dSpeed);
@@ -129,17 +135,22 @@ class OddballParticle implements Particle //uses an interface
   public void show()
   {
   	noStroke(); 
-     fill(30);
-     ellipse((float)dX, (float)dY, (float)size + 30, (float)size + 30);
+     fill(40);
+     rect((float)dX, (float)dY, (float)size + 50, (float)size + 50);
   }
 }
-// class JumboParticle extends Particle //uses inheritance
-// {
-// 	public void show()
-// 	{
-// 		noStroke();
-// 		fill(255);
-// 		ellipse((float)dX, (float)dY, 30, 30);
-// 	}
-// }
+
+class JumboParticle extends NormalParticle //uses inheritance
+{
+	public void show()
+	{
+		noStroke();
+		fill(204, 73, 73);
+		ellipse((float)dX, (float)dY-10, (float)size + 20, (float)size + 20);
+		fill(173, 46, 46);
+		ellipse((float)dX, (float)dY-5, (float)size + 20, (float)size + 20);
+		fill(30);
+		ellipse((float)dX, (float)dY, (float)size + 30, (float)size + 30);
+	}
+}
 
