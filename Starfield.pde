@@ -1,5 +1,5 @@
 Particle[] stars;
-double dX, dY, dDir, dSpeed, size; 
+double dX, dY, dDir, dSpeed, mySize; 
 color starColor = color((int)(Math.random()*200)+75, 0, (int)(Math.random()*200)+ 75);
 
 void setup()
@@ -41,7 +41,7 @@ class NormalParticle implements Particle
   	dSpeed = Math.random()*10;
     dX = 300;
     dY = 300; 
-    size = 2;
+    mySize = 2;
     r=(int)(Math.random()*256);
 	g=(int)(Math.random()*256);
 	b=(int)(Math.random()*256);
@@ -81,7 +81,7 @@ class NormalParticle implements Particle
   {
      noStroke();
      fill(r, g, b);
-     ellipse((float)dX, (float)dY, (float)size, (float)size);
+     ellipse((float)dX, (float)dY, (float)mySize, (float)mySize);
   }
 }
 
@@ -93,7 +93,7 @@ interface Particle
 
 class OddballParticle implements Particle //uses an interface
 {
-  double dX, dY, dDir, dSpeed, size; 
+  double dX, dY, dDir, dSpeed, mySize; 
   OddballParticle()
   {
   	dDir = 2 * Math.PI * Math.random();
@@ -136,7 +136,7 @@ class OddballParticle implements Particle //uses an interface
   {
   	noStroke(); 
      fill(40);
-     rect((float)dX, (float)dY, (float)size + 50, (float)size + 50);
+     rect((float)dX, (float)dY, (float)mySize + 50, (float)mySize + 50);
   }
 }
 
@@ -146,11 +146,11 @@ class JumboParticle extends NormalParticle //uses inheritance
 	{
 		noStroke();
 		fill(204, 73, 73);
-		ellipse((float)dX, (float)dY-10, (float)size + 20, (float)size + 20);
+		ellipse((float)dX, (float)dY-10, (float)mySize + 20, (float)mySize + 20);
 		fill(173, 46, 46);
-		ellipse((float)dX, (float)dY-5, (float)size + 20, (float)size + 20);
+		ellipse((float)dX, (float)dY-5, (float)mySize + 20, (float)mySize + 20);
 		fill(30);
-		ellipse((float)dX, (float)dY, (float)size + 30, (float)size + 30);
+		ellipse((float)dX, (float)dY, (float)mySize + 30, (float)mySize + 30);
 	}
 }
 
