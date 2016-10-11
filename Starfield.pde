@@ -100,7 +100,7 @@ class OddballParticle implements Particle //uses an interface
   	dSpeed = Math.random()*3;
     dX = 300;
     dY = 300; 
-    size = 2;
+    mySize = 2;
   }
 
   public void move()
